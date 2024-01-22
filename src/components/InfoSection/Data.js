@@ -1,0 +1,51 @@
+export const homeObj1 = {
+  id: "about",
+  lightBg: false,
+  lightText: true,
+  lightTextDesc: true,
+  topLine: "FinanDigio!",
+  headline: "Sobre",
+  description:
+    "Avaliação detalhada das receitas, despesas e hábitos de gastos do cliente. Utilizando ferramentas e tecnologias para fornecer uma visão instantânea da situação financeira.",
+  buttonLabel: "Começar",
+  imgStart: false,
+  img: "images/svg-1.svg",
+  alt: "Car",
+  dark: true,
+  primary: true,
+  darkText: false,
+};
+
+export const homeObj2 = {
+  id: "discover",
+  lightBg: true,
+  lightText: false,
+  lightTextDesc: false,
+  topLine: 'DESCUBRA MUITAS COISAS',
+  headline: 'Organize sua vida ',
+  description: 'Transforme seus sonhos em metas e sua bagunça financeira em clareza. Organize sua vida financeira com um sistema personalizado, trilhando um caminho sólido em direção à realização de seus objetivos.',
+  buttonLabel: "Começar",
+  imgStart: true,
+  img: "images/svg-2.svg",
+  alt: "Car",
+  dark: false,
+  primary: false,
+  darkText: true,
+};
+
+export const homeObj3 = {
+  id: "signup",
+  lightBg: true,
+  lightText: false,
+  lightTextDesc: false,
+  topLine: 'CRIAR UMA NOVA CONTA',
+  headline: 'Criar uma conta é extremamente fácil',
+  description: 'Crie uma nova conta, a menos que você já tenha uma, e aproveite',
+  buttonLabel: 'Começar',
+  imgStart: false,
+  img: "images/svg-3.svg",
+  alt: "Car",
+  dark: false,
+  primary: false,
+  darkText: true,
+};

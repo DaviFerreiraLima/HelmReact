@@ -1,0 +1,67 @@
+# Número de réplicas do pod que será criado
+replicaCount: 1
+
+# Configurações relacionadas à imagem do container
+image:
+  repository: daviferreilima/frontendreactguxta  # Repositório da imagem
+  pullPolicy: IfNotPresent  # Política de recuperação da imagem (se não estiver presente, baixar)
+  tag: "latest"  # Tag da imagem a ser usada
+
+# Configurações da conta de serviço (ServiceAccount) do Kubernetes
+serviceAccount:
+  create: true  # Criar uma conta de serviço
+  automount: true  # Montar automaticamente as credenciais da API da conta de serviço
+  annotations: {}  # Anotações adicionais para a conta de serviço
+  name: ""  # Nome da conta de serviço (se não definido, um nome é gerado automaticamente)
+
+# Configurações do serviço Kubernetes
+service:
+  type: ClusterIP  # Tipo de serviço (ClusterIP, NodePort, LoadBalancer)
+  port: 3000  # Porta do serviço dentro do cluster
+  targetPort: 3000  # Porta para a qual o tráfego será encaminhado no pod
+
+# Configurações do Horizontal Pod Autoscaler (HPA)
+hpa:
+  enabled: false  # HPA desativado por padrão
+  minReplicas: 1  # Número mínimo de réplicas
+  maxReplicas: 10  # Número máximo de réplicas
+  targetAverageUtilization:
+    cpu: 70  # Utilização média desejada da CPU
+    memory: 70  # Utilização média desejada da memória
+
+# Configurações da sonda de verificação de integridade (livenessProbe)
+livenessProbe:
+  failureThreshold: 3  # Número de falhas consecutivas para considerar o contêiner não saudável
+  tcpSocket:
+    port: 3000  # Porta a ser verificada
+  initialDelaySeconds: 30  # Tempo antes da primeira verificação
+  periodSeconds: 10  # Intervalo entre verificações subsequentes
+  successThreshold: 1  # Número de verificações de sucesso consecutivas necessárias
+  timeoutSeconds: 15  # Tempo limite para uma verificação
+
+# Configurações da sonda de prontidão (readinessProbe)
+readinessProbe:
+  failureThreshold: 3  # Número de falhas consecutivas para considerar o contêiner não pronto
+  tcpSocket:
+    port: 3000  # Porta a ser verificada
+  initialDelaySeconds: 15  # Tempo antes da primeira verificação
+  periodSeconds: 10  # Intervalo entre verificações subsequentes
+  successThreshold: 1  # Número de verificações de sucesso consecutivas necessárias
+  timeoutSeconds: 15  # Tempo limite para uma verificação
+
+# Configurações de recursos (CPU e memória) para o pod
+resources:
+  limits:
+    cpu: 250m  # Limite máximo de CPU
+    memory: 256Mi  # Limite máximo de memória
+
+  requests:
+    cpu: 250m  # Quantidade inicial de CPU solicitada
+    memory: 256Mi  # Quantidade inicial de memória solicitada
+
+# Configurações do Autoscaler
+autoscaling:
+  enabled: false  # Autoscaler desativado por padrão
+  minReplicas: 1  # Número mínimo de réplicas
+  maxReplicas: 5  # Número máximo de réplicas
+  targetCPUUtilizationPercentage: 80  # Utilização desejada da CPU para ajustar o número de réplicas
