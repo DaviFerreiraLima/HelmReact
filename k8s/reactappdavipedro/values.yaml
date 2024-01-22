@@ -16,7 +16,7 @@ serviceAccount:
 
 # Configurações do serviço Kubernetes
 service:
-  type: ClusterIP  # Tipo de serviço (ClusterIP, NodePort, LoadBalancer)
+  type: LoadBalancer  # Tipo de serviço (ClusterIP, NodePort, LoadBalancer)
   port: 3000  # Porta do serviço dentro do cluster
   targetPort: 3000  # Porta para a qual o tráfego será encaminhado no pod
 
@@ -52,11 +52,11 @@ readinessProbe:
 # Configurações de recursos (CPU e memória) para o pod
 resources:
   limits:
-    cpu: 550m  # Limite máximo de CPU
+    cpu: 250m  # Limite máximo de CPU
     memory: 256Mi  # Limite máximo de memória
 
   requests:
-    cpu: 550m  # Quantidade inicial de CPU solicitada
+    cpu: 250m  # Quantidade inicial de CPU solicitada
     memory: 256Mi  # Quantidade inicial de memória solicitada
 
 # Configurações do Autoscaler
@@ -67,5 +67,4 @@ autoscaling:
   targetCPUUtilizationPercentage: 80  # Utilização desejada da CPU para ajustar o número de réplicas
 
 ingress:
-
   enabled: false 
