@@ -65,3 +65,6 @@ autoscaling:
   minReplicas: 1  # Número mínimo de réplicas
   maxReplicas: 5  # Número máximo de réplicas
   targetCPUUtilizationPercentage: 80  # Utilização desejada da CPU para ajustar o número de réplicas
+
+ingress:
+  enabled: false 
